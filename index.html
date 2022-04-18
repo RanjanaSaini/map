@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <title>Simple Map</title>
-      <meta name="viewport" content="initial-scale=1.0">
-      <meta charset="utf-8">
-      
-      <script type='text/javascript' src='config.js'></script>
+ <!DOCTYPE html>
+ <html>
+     <head>
 
-      <script src="C:\Users\Dell\Desktop\web development\map\index.js"></script>
-    <link rel="stylesheet" href="C:\Users\Dell\Desktop\web development\map\style.css">
-   </head>
-    <body> 
-<input id="searchInput" class="controls" type="text" placeholder="Enter a location"> 
+     </head>
+     <body>
+      <input id="autocomplete" placeholder="Enter a location" type="text"/> 
+         <script>
+           let autocomplete;
+           function initAutocomplete (){
+             autocomplete =new google.maps.places.Autocomplete(
+               document.getElementById('autocomplete'),{
+type:
+['(cities)'],
+componentRestrictions:{'country':['India']},
+fields:{'place_id':ChIJkbeSa_BfYzARphNChaFPjNc}
+});
+autocomplete.addListener('place_changed',onPlaceChanged);
+}
 
-<div id="map"></div>
+             function onPlaceChanged(){
+var place = autocomplete.getPlace();
+if(!place.geometry){
+  document.getElementById('autocomplete').placeholder='enter a place';
+}else{
+  document.getElementById('details').innerHTML = place.name;
+}
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_TmUynN_Wjm2OMCoNQNk2ITU1kcNTgw&libraries=places&callback=initAutocomplete" async defer></script>
 
-       <script 
-       src="https://maps.googleapis.com/maps/api/js?key=' + key + '&callback=initMap&v=weekly"defer>     
-  </script> 
-  </body>
-  </html>  
-  
-    
-
+     </body>
+ </html>
 
