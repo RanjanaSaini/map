@@ -5,7 +5,7 @@ function initAutocomplete (){
 type:
 ['(cities)'],
 componentRestrictions:{'country':['India']},
-fields:{'place_id':['ChIJkbeSa_BfYzARphNChaFPjNc']}
+fields:['place_id']
 });
 autocomplete.addListener('place_changed',onPlaceChanged);
 }
