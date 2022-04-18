@@ -1,15 +1,17 @@
  <!DOCTYPE html>
  <html>
-     <head>
-
-     </head>
-     <body>
-      <input id="autocomplete" placeholder="Enter a location" type="text"/> 
-         <script>
-           let autocomplete;
-           function initAutocomplete (){
-             autocomplete =new google.maps.places.Autocomplete(
-               document.getElementById('autocomplete'),{
+<head>
+<meta charset="UTF-8">
+<title>simple map</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<input id="autocomplete" placeholder="Enter a location" type="text"/> 
+<script>
+ let autocomplete;
+ function initAutocomplete (){
+  autocomplete =new google.maps.places.Autocomplete(
+  document.getElementById('autocomplete'),{
 type:
 ['(cities)'],
 componentRestrictions:{'country':['India']},
@@ -18,7 +20,7 @@ fields:{'place_id':ChIJkbeSa_BfYzARphNChaFPjNc}
 autocomplete.addListener('place_changed',onPlaceChanged);
 }
 
-             function onPlaceChanged(){
+function onPlaceChanged(){
 var place = autocomplete.getPlace();
 if(!place.geometry){
   document.getElementById('autocomplete').placeholder='enter a place';
